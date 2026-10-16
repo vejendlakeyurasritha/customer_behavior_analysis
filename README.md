@@ -158,6 +158,8 @@ All monetary values are reported in USD, as documented in the project report.
 
 ## 📈 Power BI Dashboard
 
+![Customer Shopping Behavior Dashboard](dashboard.png)
+
 The Power BI report presents key metrics and analytical findings, including:
 
 - Revenue by age group
