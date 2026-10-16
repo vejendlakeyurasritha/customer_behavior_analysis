@@ -186,11 +186,15 @@ The Power BI report presents key metrics and analytical findings, including:
 - Monetary values are retained in USD.
 - Missing review ratings were imputed using the median rating within each category, which may influence rating summaries.
 
-## 📁 Project Files
 
-- `customer_analysis.pbix` — Power BI report.
+## 📁 Project Structure
 
-Python scripts, MySQL query files, and the source dataset can also be added to the repository if you want to share the complete workflow.
+- `Customer_shopping_analysis.ipynb` — Python notebook for data cleaning, preprocessing, feature engineering, and analysis.
+- `customer_analysis_sql.sql` — MySQL queries for business analysis.
+- `customer_analysis.pbix` — Power BI dashboard.
+- `customer_shopping_behavior.csv` — Source dataset.
+- `Customer Shopping Behavior.pdf` — Project report.
+- `README.md` — Project documentation.
 
 ## 🚀 How to View the Dashboard
 
