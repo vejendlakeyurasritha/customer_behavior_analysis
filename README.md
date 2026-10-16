@@ -107,6 +107,12 @@ All monetary values are reported in USD, as documented in the project report.
 | Average spend | $59.49 | $59.87 |
 | Total revenue | $62,645.00 | $170,436.00 |
 
+**Key Insight:** The average purchase amount is similar for subscribers ($59.49) and non-subscribers ($59.87), with non-subscribers recording a slightly higher average of $0.38 per purchase.
+
+**Business Implication:** Subscription status alone does not appear to distinguish customers by average purchase amount in this dataset. Further analysis of purchase frequency, retention, and subscription benefits would help assess the value of the subscription program.
+
+**Limitation:** This is a descriptive comparison and does not establish whether subscription status affects customer spending.
+
 ### Top 5 Products by Average Rating
 
 | Product | Average Rating |
@@ -134,13 +140,15 @@ All monetary values are reported in USD, as documented in the project report.
 | Sweater | 48.17% |
 | Pants | 47.37% |
 
-### Customer Segmentation
+### Purchase Record Segmentation
 
 | Segment | Customers |
 |---|---:|
 | Loyal | 3,116 |
 | Returning | 701 |
 | New | 83 |
+
+**Note:** The segments are defined using the `Previous Purchases` field and predefined thresholds. These counts represent purchase records assigned to each rule-based segment, not necessarily unique customers. The segment labels and thresholds are analytical assumptions and should not be interpreted as verified measures of customer loyalty.
 
 ### Revenue by Age Group
 
@@ -151,11 +159,11 @@ All monetary values are reported in USD, as documented in the project report.
 | Adult | $55,978 |
 | Senior | $55,763 |
 
-### Repeat Purchase Analysis
+### Previous Purchase Count Analysis
 
-- **958 customers** had more than five purchases.
-- **2,518 customers** did not have more than five purchases.
-
+- 958 purchase records have a `Previous Purchases` value greater than five.
+- 2,518 purchase records have a `Previous Purchases` value of five or less.
+- 
 ## 📈 Power BI Dashboard
 
 ![Customer Shopping Behavior Dashboard](dashboard.png)
@@ -173,20 +181,26 @@ The Power BI report presents key metrics and analytical findings, including:
 
 ## 💡 Business Recommendations
 
-1. **Encourage subscriptions:** Promote exclusive subscription benefits to encourage customer sign-ups.
-2. **Reward repeat customers:** Use loyalty initiatives to recognize repeat purchasing behavior.
-3. **Review discount policies:** Evaluate discount usage while balancing sales objectives and profit margins.
-4. **Promote highly rated products:** Use product ratings and purchase counts to guide marketing campaigns.
-5. **Target relevant customer groups:** Consider higher-revenue age groups and express-shipping customers when planning campaigns.
+1. **Evaluate Subscription Engagement:** Investigate the factors influencing subscription adoption and test whether targeted benefits improve sign-up and retention rates.
 
-*These are recommendations for consideration; their business impact has not been measured in this analysis.*
+2. **Explore Repeat-Purchase Behavior:** Analyze purchase-history patterns to identify opportunities for customer retention initiatives.
+
+3. **Review Discount Usage:** Compare purchase amounts across discount usage groups and, if cost data is available, evaluate profit margins before changing discount policies.
+
+4. **Analyze Product Ratings:** Examine highly rated products alongside purchase volume and customer feedback to identify potential promotional opportunities.
+
+5. **Investigate Shipping Preferences:** Compare purchase amounts across shipping methods to understand customer preferences without assuming that shipping choice causes higher spending.
+
+**Note:** These recommendations are proposed actions based on descriptive analysis. Their effectiveness has not been tested or measured in this project.
 
 ## ⚠️ Limitations
 
-- The analysis is based on the provided transactional dataset.
-- No additional inferred or estimated data is included beyond the reported SQL results.
-- Monetary values are retained in USD.
-- Missing review ratings were imputed using the median rating within each category, which may influence rating summaries.
+- **Dataset Scope:** The analysis uses 3,900 purchase records from the provided dataset. The findings may not represent the wider customer population.
+- **Missing Values:** Missing review ratings were imputed using the median rating within each category. This approach may affect rating summaries.
+- **Customer Segmentation:** Segments are based on predefined thresholds applied to the `Previous Purchases` field. They are rule-based categories, not independently verified customer loyalty classifications.
+- **Descriptive Analysis:** The project identifies patterns and associations but does not establish causal relationships.
+- **Profitability:** Revenue and purchase amounts alone cannot establish product or discount profitability without cost and margin data.
+- **Recommendation Validation:** The proposed business recommendations have not been tested through experiments or measured for business impact.
 
 
 ## 📁 Project Structure
@@ -198,13 +212,47 @@ The Power BI report presents key metrics and analytical findings, including:
 - `Customer Shopping Behavior.pdf` — Project report.
 - `README.md` — Project documentation.
 
-## 🚀 How to View the Dashboard
+## 🚀 Getting Started
 
-1. Clone or download this repository.
-2. Open `customer_analysis.pbix` using Microsoft Power BI Desktop.
-3. Explore the report visuals and business metrics.
+### Prerequisites
 
-To reproduce the complete analysis, the corresponding Python code, source dataset, and MySQL queries must also be available.
+- Python 3.x
+- Jupyter Notebook
+- MySQL Server and a MySQL client
+- Microsoft Power BI Desktop
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/vejendlakeyurasritha/customer_behavior_analysis.git
+cd customer_behavior_analysis
+```
+
+Alternatively, download the repository as a ZIP file from GitHub.
+
+### 2. Run the Python Analysis
+
+1. Open `Customer_shopping_analysis.ipynb` in Jupyter Notebook.
+2. Ensure the required Python libraries are installed.
+3. Run the notebook cells in order to inspect the data preparation, feature engineering, and analysis.
+
+### 3. Execute the MySQL Queries
+
+1. Open `customer_analysis_sql.sql` in your MySQL client.
+2. Create or select the database and prepare the required table.
+3. Ensure the table and column names match those referenced in the SQL script.
+4. Execute the queries to explore the business questions.
+
+### 4. View the Power BI Dashboard
+
+1. Open `customer_analysis.pbix` using Power BI Desktop.
+2. Review the dashboard visuals and customer behavior metrics.
+
+### 5. Review the Project Report
+
+Open `Customer Shopping Behavior.pdf` to read the project's documented analysis and findings.
+
+**Note:** Complete the necessary database and data preparation steps before running the SQL queries. Python package requirements and database configuration should be documented if additional setup is needed.
 
 ## 🧠 Skills Demonstrated
 
@@ -218,7 +266,3 @@ To reproduce the complete analysis, the corresponding Python code, source datase
 - Translating analytical findings into business recommendations
 
 ---
-
-**Project:** Customer Shopping Behavior Analysis  
-**Technologies:** Python | MySQL | Power BI  
-**Dataset:** 3,900 purchase records | 18 columns
